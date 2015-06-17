@@ -41,8 +41,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'apps.t1_base',
     'apps.hello',
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -127,3 +128,7 @@ TEMPLATE_DIRS = (
 
 # Turn off south during test
 SOUTH_TESTS_MIGRATE = False
+
+SOUTH_DATABASE_ADAPTERS = {
+    'default': "south.db.sqlite3",
+}
