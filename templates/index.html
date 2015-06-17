@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="wrap">
+    <div class="left">
+    <p><span class="label">Name:</span> {{ contact.name }}</p>
+    <p><span class="label">Last name:</span> {{ contact.last_name }}</p>
+    <p><span class="label">Date of birth:</span> {{ contact.date_of_birth }}</p>
+    <p><span class="label">Bio:</span> {{ contact.bio|escape|linebreaks }}</p>
+    </div>
+
+    <div class="right">
+    <p><span class="label">Contacts:</span> {{ contact.contacts }}</p>
+    <p><span class="label">Email:</span> {{ contact.email }}</p>
+    <p><span class="label">Jabber:</span> {{ contact.jabber }}</p>
+    <p><span class="label">Skype:</span> {{ contact.skype }}</p>
+    <p><span class="label">Other contacts:</span> {{ contact.other_contacts|escape|linebreaks }}</p>
+    </div>
+
+    <div class="clear">
+        <a href="/requests/">requests</a>
+    </div>
+</div>
+{% endblock %}
