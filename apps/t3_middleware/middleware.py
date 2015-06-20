@@ -1,4 +1,4 @@
-from models import HttpRequestStore
+from t1_base.models import HttpRequestStore
 
 class HttpRequestStore:
     def storage(self, request):

@@ -1,5 +1,6 @@
 from django.db import models
 from django.forms import ModelForm
+from datetime import datetime
 # Create your models here.
 
 class Contact(models.Model):
@@ -18,3 +19,17 @@ class ContactForm(ModelForm):
     class Meta:
         model = Contact
         fields = '__all__'
+
+class HttpRequestStore(models.Model):
+    date = models.DateTimeField('Request date/time', default=datetime.now())
+    method = models.CharField('Method', max_length=6)
+    path = models.CharField(max_length=256)
+    host = models.CharField(max_length=256)
+    priority = models.IntegerField(default=0, db_index=True)
+    def __unicode__(self):
+        return u'%d %s %s %s' % (
+                    self.priority,
+                    self.date.strftime('%Y-%m-%d %H:%M:%S'),
+                    self.method,
+                    self.path
+                )

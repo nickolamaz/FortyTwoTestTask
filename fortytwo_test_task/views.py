@@ -1,7 +1,7 @@
 from django.template import loader, Context
 from django.http import HttpResponseRedirect
-from t1_base.models import Contact, ContactForm
-from t3_middleware.models import HttpRequestStore
+from t1_base.models import Contact, ContactForm, HttpRequestStore
+# from t1_base.models import HttpRequestStore
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout as _logout
