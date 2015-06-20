@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block script %}
+   <script>
+      $(function(){
+         $("#id_date_of_birth").datepicker();
+         $('#editForm').submit(function(){
+            $(this).ajaxSubmit({
+               beforeSend: function(){
+                  $('.progress').show();
+                  $('input:submit').attr("disabled","disabled");
+               },
+               success : function() {
+                  $('.progress').hide();
+                  $('input:submit').removeAttr("disabled");
+                  
+               },
+            });
+            return false;
+            });
+      });
+   </script>
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'index' %}">Back</a>
+<div class="info">
+
+   <form action="" method="POST" id="editForm">{% csrf_token %}
+      {{form.as_p}}
+      <input type="submit" value="save">
+   </form>
+
+</div>
+
+<div class="progress">
+   Changes have been saved
+</div>
+
+{% endblock %}

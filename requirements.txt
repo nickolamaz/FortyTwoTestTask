@@ -1,4 +1,6 @@
-PIL==1.1.7
+--allow-all-external
 Django==1.6.7
 South==1.0.2
 42cc-pystyle
+PIL==1.1.7
+--allow-unverified PIL

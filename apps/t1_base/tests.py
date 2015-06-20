@@ -16,6 +16,7 @@ class ModelTest(TestCase):
             "skype": "nickola2007",
             "jabber": "nickolamaz@jabber.ru",
             "email": "nickola_90@list.ru",
+            "photo": None,
         }
 
         self.contact = Contact.objects.create(**self._contact)
