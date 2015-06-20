@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'apps.t1_base',
     'apps.t3_middleware',
+    'apps.t8_template_tags',
     'apps.hello',
     'south',
 )
