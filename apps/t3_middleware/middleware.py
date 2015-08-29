@@ -1,6 +1,7 @@
 from models import HttpRequestStore
 
-class HttpRequestStore:
+
+class RequestStore(HttpRequestStore):
     def storage(self, request):
         store = HttpRequestStore()
         store.host = request.get_host()

@@ -2,12 +2,16 @@ from django.test import TestCase
 from models import Contact
 
 # Create your tests here.
+
+
 class ModelTest(TestCase):
     def setUp(self):
+        """Create new person"""
         self._contact = {
             "bio": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. \
             \r\nAenean commodo ligula eget dolor. Aenean massa. \
-            \r\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+            \r\nCum sociis natoque penatibus et magnis dis parturient "
+                   "montes, nascetur ridiculus mus.",
             "name": "Nikolay",
             "contacts": "Nikolaev",
             "last_name": "Mazurenko",

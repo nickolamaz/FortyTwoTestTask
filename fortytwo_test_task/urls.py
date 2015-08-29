@@ -13,7 +13,8 @@ urlpatterns = patterns(
     url(r'^$', views.index, name='index'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^requests/', views.request, name='request'),
-    url( r'^login/$', 'django.contrib.auth.views.login', { "template_name": "login.html" }),
+    url(r'^login/$', 'django.contrib.auth.views.login',
+        {"template_name": "login.html"}),
     url(r'^logout/', views.logout, name='logout'),
     url(r'^edit/', views.edit, name='edit'),
 )

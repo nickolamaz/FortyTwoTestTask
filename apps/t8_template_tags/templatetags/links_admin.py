@@ -3,12 +3,13 @@ from django.core.urlresolvers import reverse
 
 register = template.Library()
 
+
 @register.simple_tag
 def admin_path(obj):
     return reverse('admin:%s_%s_change' % (
-                    obj._meta.app_label,
-                    obj._meta.module_name
-                ), args=(obj.id,))
+        obj._meta.app_label,
+        obj._meta.module_name
+    ), args=(obj.id,))
 
 
 class AdminEditLinkNode(template.Node):
@@ -36,7 +37,7 @@ def do_edit_link(parser, token):
         obj = token.pop(1)
     except IndexError:
         raise template.TemplateSyntaxError, \
-                '%s tag requires at least an object as first argument' % token[0]
+        '%s tag requires at least an object as first argument' % token[0]
 
     try:
         label = token.pop(1)
