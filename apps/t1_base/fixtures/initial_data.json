@@ -1,0 +1,17 @@
+[
+    {
+        "model": "t1_base.Contact",
+        "pk": 1,
+        "fields": {
+            "name": "Nikolay",
+            "last_name": "Mazurenko",
+            "date_of_birth": "2015-09-08",
+            "bio": "Here must be my bio",
+            "contacts": "my_contacts",
+            "email": "nickola_90@list.ru",
+            "jabber": "nickolamaz",
+            "skype": "nickolamaz",
+            "other_contacts": "Mazurenko"
+        }
+    }
+]
