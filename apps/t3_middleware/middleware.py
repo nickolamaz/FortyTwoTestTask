@@ -1,8 +1,8 @@
 from models import HttpRequestStore
 
 
-class RequestStore(HttpRequestStore):
-    def storage(self, request):
+class RequestStore(object):
+    def process_request(self, request):
         store = HttpRequestStore()
         store.host = request.get_host()
         store.path = request.get_full_path()
@@ -10,3 +10,4 @@ class RequestStore(HttpRequestStore):
         if request.user.is_authenticated():
             store.user = request.user
         store.save()
+        return None
