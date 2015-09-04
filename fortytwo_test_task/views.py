@@ -1,5 +1,3 @@
-# from django.template import loader, Context
-# from django.http import HttpResponseRedirect
 from apps.t1_base.models import Contact, ContactForm
 from apps.t3_middleware.models import HttpRequestStore
 from django.shortcuts import render, get_object_or_404, redirect
@@ -26,13 +24,16 @@ def edit(request, template_name='edit.html'):
                 if form.is_valid():
                     form.save()
                     form = ContactForm(instance=contact)
-                return render(request, 'contact.html', {'form': form, 'contact': contact})
+                return render(request, 'contact.html',
+                              {'form': form, 'contact': contact})
             if form.is_valid():
                 form.save()
                 return redirect('index')
-            return render(request, template_name, {'form': form, 'contact': contact})
+            return render(request, template_name,
+                          {'form': form, 'contact': contact})
     form = ContactForm(instance=contact)
-    return render(request, template_name, {'form': form, 'contact': contact})
+    return render(request, template_name,
+                  {'form': form, 'contact': contact})
 
 
 def logout(request):
