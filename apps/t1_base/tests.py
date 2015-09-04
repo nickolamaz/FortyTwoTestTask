@@ -26,5 +26,6 @@ class ModelTest(TestCase):
         self.contact = Contact.objects.create(**self._contact)
 
     def test_fields(self):
+        """Testing created fields"""
         for k in self._contact.keys():
             self.assertEquals(self._contact[k], getattr(self.contact, k))

@@ -37,7 +37,7 @@ def do_edit_link(parser, token):
         obj = token.pop(1)
     except IndexError:
         raise template.TemplateSyntaxError, \
-        '%s tag requires at least an object as first argument' % token[0]
+            '%s tag requires at least an object as first argument' % token[0]
 
     try:
         label = token.pop(1)
