@@ -9,6 +9,7 @@ class HttpRequestStore(models.Model):
     method = models.CharField('Method', max_length=6, null=1, blank=1)
     path = models.CharField(max_length=256, null=1, blank=1)
     host = models.CharField(max_length=256, null=1, blank=1)
+    priority = models.IntegerField(default=1)
 
     def __unicode__(self):
         return u'%s %s %s' % (
