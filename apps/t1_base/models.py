@@ -13,7 +13,8 @@ class Contact(models.Model):
     jabber = models.EmailField('Jabber ID')
     skype = models.CharField('Skype ID', max_length=50, null=1, blank=1)
     other_contacts = models.TextField('Other contacts', null=1, blank=1)
-    photo = models.ImageField(upload_to='photo', height_field=200, width_field=200, null=1, blank=1)
+    photo = models.ImageField(upload_to='photo', height_field=200,
+                              width_field=200, null=1, blank=1)
 
 
 class ContactForm(ModelForm):

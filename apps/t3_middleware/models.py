@@ -5,7 +5,8 @@ from datetime import datetime
 
 
 class HttpRequestStore(models.Model):
-    date = models.DateTimeField('Request date/time', default=datetime.now(), null=1, blank=1)
+    date = models.DateTimeField('Request date/time',
+                                default=datetime.now(), null=1, blank=1)
     method = models.CharField('Method', max_length=6, null=1, blank=1)
     path = models.CharField(max_length=256, null=1, blank=1)
     host = models.CharField(max_length=256, null=1, blank=1)
