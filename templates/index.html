@@ -24,9 +24,10 @@
                 <p><span class="label">Date of birth:</span> {{ contact.date_of_birth }}</p>
                 <p><span class="label">Photo:</span></p>
                 {% if contact.photo %}
-                <div id="photo-preview" style="background:url('{{ contact.photo.url }}')">
-                   <div id="photo-stub">Photo preview</div>
-                </div>
+{#                <div id="photo-preview" style="background:url('{{ contact.photo.url }}')">#}
+{#                   <div id="photo-stub">Photo preview</div>#}
+{#                </div>#}
+                    <img src="{{ contact.photo }}" alt="">
                 {% else %}
                     <div id="photo-preview"></div>
                     <div id="photo-stub">No photo</div>

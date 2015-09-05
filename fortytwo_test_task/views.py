@@ -20,17 +20,9 @@ def edit(request, template_name='edit.html'):
     contact = get_object_or_404(Contact)
     if request.method == 'POST':
             form = ContactForm(request.POST, request.FILES, instance=contact)
-            if request.POST.get('is_ajaxForm') == '1':
-                if form.is_valid():
-                    form.save()
-                    form = ContactForm(instance=contact)
-                return render(request, 'contact.html',
-                              {'form': form, 'contact': contact})
             if form.is_valid():
                 form.save()
                 return redirect('index')
-            return render(request, template_name,
-                          {'form': form, 'contact': contact})
     form = ContactForm(instance=contact)
     return render(request, template_name,
                   {'form': form, 'contact': contact})

@@ -1,38 +1,43 @@
 {% extends "base.html" %}
 {% block script %}
-   <script>
-      $(function(){
-         $("#id_date_of_birth").datepicker();
-         $('#editForm').submit(function(){
-            $(this).ajaxSubmit({
-               beforeSend: function(){
-                  $('.progress').show();
-                  $('input:submit').attr("disabled","disabled");
-               },
-               success : function() {
-                  $('.progress').hide();
-                  $('input:submit').removeAttr("disabled");
-                  
-               },
-            });
-            return false;
-            });
-      });
-   </script>
+    <script>
+    $(document).ready(function() {
+    $('#id_date_of_birth').datepicker();
+    $('#editForm').submit(function(e) {
+        e.preventDefault();
+        var data = $('#editForm').serialize();
+        $.ajax({
+            type: 'POST',
+            url: this.url,
+            data: data,
+            success: function(data) {
+                console.log(data);
+                $('.progress').hide();
+                $('.progress').show();
+            },
+            error: function(data) {
+                console.log(data);
+            }
+            })
+        });
+    });
+    </script>
 {% endblock %}
 
 {% block content %}
+
 <a href="{% url 'index' %}">Back</a>
 <div class="info">
 
-   <form action="" method="POST" id="editForm">{% csrf_token %}
+   <form action="{% url 'edit' %}" method="POST" id="editForm" enctype="multipart/form-data">
+      {% csrf_token %}
       {{form.as_p}}
       <input type="submit" value="save">
    </form>
 
 </div>
 
-<div class="progress">
+<div class="progress" style="display: none;">
    Changes have been saved
 </div>
 

@@ -10,4 +10,4 @@ class RequestStore(object):
         if request.user.is_authenticated():
             store.user = request.user
         store.save()
-        return None
+        # return None
