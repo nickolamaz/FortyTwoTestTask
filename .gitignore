@@ -6,7 +6,6 @@
 *.swo
 *.swn
 *.esproj
-migrations/
 .idea
 .Ds_Store
 *~
