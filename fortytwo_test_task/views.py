@@ -1,4 +1,5 @@
-from apps.t1_base.models import Contact, ContactForm
+from apps.t1_base.models import Contact
+from apps.t1_base.forms import ContactForm
 from apps.t3_middleware.models import HttpRequestStore
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required

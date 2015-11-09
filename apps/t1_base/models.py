@@ -1,5 +1,4 @@
 from django.db import models
-from django.forms import ModelForm
 # Create your models here.
 
 
@@ -15,9 +14,3 @@ class Contact(models.Model):
     other_contacts = models.TextField('Other contacts', null=1, blank=1)
     photo = models.ImageField(upload_to='photo', height_field=200,
                               width_field=200, null=1, blank=1)
-
-
-class ContactForm(ModelForm):
-    class Meta:
-        model = Contact
-        fields = '__all__'
