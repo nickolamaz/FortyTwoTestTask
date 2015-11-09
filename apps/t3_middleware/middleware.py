@@ -9,5 +9,5 @@ class RequestStore(object):
         store.method = request.method
         if request.user.is_authenticated():
             store.user = request.user
-        store.save()
+        # store.save()
         return None
