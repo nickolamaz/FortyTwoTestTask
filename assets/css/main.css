@@ -1,0 +1,20 @@
+/*.wrap {*/
+    /*max-width: 1000px;*/
+/*}*/
+
+/*.right {*/
+    /*float:right;*/
+/*}*/
+
+/*.left {*/
+    /*float: left;*/
+/*}*/
+
+/*.label {*/
+    /*font-weight: bold;*/
+/*}*/
+
+.clear {
+    border-top: 2px solid black;
+    clear: both;
+}

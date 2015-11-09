@@ -1,51 +1,36 @@
 {% extends "base.html" %}
-{% load links_admin %}
 
 <h2>42 Coffee Cups Test Assignment</h2>
 
-{% block navigation %}
-    <div id="nav">
-    {% if user.is_authenticated %}
-      <a href="{% url 'edit' %}">Edit</a>&nbsp;
-      {% admin_edit_link contact (admin) %}&nbsp;|
-      <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-        <a href="{% url 'django.contrib.auth.views.login' %}">Login</a>
-    {% endif %}
-    </div>
-{% endblock %}
-
 {% block content %}
     {% if contact %}
-        <div class="wrap">
-            <div class="left">
-                <p><span class="label">Name:</span> {{ contact.name }}</p>
-                <p><span class="label">Last name:</span> {{ contact.last_name }}</p>
-                <p><span class="label">Date of birth:</span> {{ contact.date_of_birth }}</p>
-                <p><span class="label">Photo:</span></p>
+        <div class="container">
+            <div class="col-md-6">
+                <p><label for="name">Name:</label> {{ contact.name }}</p>
+                <p><label for="last_name">Last name:</label> {{ contact.last_name }}</p>
+                <p><label for="date_of_birth">Date of birth:</label> {{ contact.date_of_birth }}</p>
+                <p><label for="photo">Photo:</label></p>
                 {% if contact.photo %}
-{#                <div id="photo-preview" style="background:url('{{ contact.photo.url }}')">#}
-{#                   <div id="photo-stub">Photo preview</div>#}
-{#                </div>#}
-                    <img src="{{ contact.photo }}" alt="">
+                    <img src="{{ contact.photo }}" alt="{{ contact.name }}">
                 {% else %}
                     <div id="photo-preview"></div>
                     <div id="photo-stub">No photo</div>
                 {% endif %}
-                </div>
+            </div>
 
-                <div class="right">
-                <p><span class="label">Contacts:</span> {{ contact.contacts }}</p>
-                <p><span class="label">Email:</span> {{ contact.email }}</p>
-                <p><span class="label">Jabber:</span> {{ contact.jabber }}</p>
-                <p><span class="label">Skype:</span> {{ contact.skype }}</p>
-                <p><span class="label">Other contacts:</span> {{ contact.other_contacts|escape|linebreaks }}</p>
-                <p><span class="label">Bio:</span> {{ contact.bio|escape|linebreaks }}</p>
-                </div>
+            <div class="col-md-6">
+                <p><label for="contacts">Contacts:</label> {{ contact.contacts }}</p>
+                <p><label for="email">Email:</label> {{ contact.email }}</p>
+                <p><label for="jabber">Jabber:</label> {{ contact.jabber }}</p>
+                <p><label for="skype">Skype:</label> {{ contact.skype }}</p>
+                <p><label for="other_contacts">Other contacts:</label> {{ contact.other_contacts|escape|linebreaks }}</p>
+                <p><label for="bio">Bio:</label> {{ contact.bio|escape|linebreaks }}</p>
+            </div>
+            <div class="clear">
+                <a href="{% url 'request' %}">requests</a>
+            </div>
         </div>
-        <div class="clear">
-            <a href="/requests/">requests</a>
-        </div>
+
     {% endif %}
 
 {% endblock %}
