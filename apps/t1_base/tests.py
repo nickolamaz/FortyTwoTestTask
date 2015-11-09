@@ -33,5 +33,6 @@ class ModelTest(TestCase):
             self.assertEquals(self._contact[k], getattr(self.contact, k))
 
     def test_get_request(self):
+        """Testing get request for index page"""
         request = self.client.get(reverse(views.index))
         self.assertEqual(request.status_code, 200)
