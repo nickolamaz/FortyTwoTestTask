@@ -11,10 +11,11 @@ class Migration(SchemaMigration):
         # Adding model 'HttpRequestStore'
         db.create_table(u't3_middleware_httprequeststore', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2015, 9, 5, 0, 0), null=1, blank=1)),
+            ('date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2015, 11, 9, 0, 0), null=1, blank=1)),
             ('method', self.gf('django.db.models.fields.CharField')(max_length=6, null=1, blank=1)),
             ('path', self.gf('django.db.models.fields.CharField')(max_length=256, null=1, blank=1)),
             ('host', self.gf('django.db.models.fields.CharField')(max_length=256, null=1, blank=1)),
+            ('priority', self.gf('django.db.models.fields.IntegerField')(default=1)),
         ))
         db.send_create_signal(u't3_middleware', ['HttpRequestStore'])
 
@@ -27,11 +28,12 @@ class Migration(SchemaMigration):
     models = {
         u't3_middleware.httprequeststore': {
             'Meta': {'object_name': 'HttpRequestStore'},
-            'date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2015, 9, 5, 0, 0)', 'null': '1', 'blank': '1'}),
+            'date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2015, 11, 9, 0, 0)', 'null': '1', 'blank': '1'}),
             'host': ('django.db.models.fields.CharField', [], {'max_length': '256', 'null': '1', 'blank': '1'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'method': ('django.db.models.fields.CharField', [], {'max_length': '6', 'null': '1', 'blank': '1'}),
-            'path': ('django.db.models.fields.CharField', [], {'max_length': '256', 'null': '1', 'blank': '1'})
+            'path': ('django.db.models.fields.CharField', [], {'max_length': '256', 'null': '1', 'blank': '1'}),
+            'priority': ('django.db.models.fields.IntegerField', [], {'default': '1'})
         }
     }
 
