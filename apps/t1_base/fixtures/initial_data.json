@@ -13,5 +13,13 @@
             "skype": "nickolamaz",
             "other_contacts": "Mazurenko"
         }
+    },
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "username": "nickola",
+            "password": "123"
+        }
     }
 ]
