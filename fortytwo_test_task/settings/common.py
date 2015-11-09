@@ -135,3 +135,7 @@ SOUTH_TESTS_MIGRATE = False
 SOUTH_DATABASE_ADAPTERS = {
     'default': "south.db.sqlite3",
 }
+
+FIXTURE_DIRS = (
+   os.path.join(BASE_DIR, 'fixtures'),
+)
