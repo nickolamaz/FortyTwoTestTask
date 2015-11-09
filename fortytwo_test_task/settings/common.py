@@ -137,5 +137,5 @@ SOUTH_DATABASE_ADAPTERS = {
 }
 
 FIXTURE_DIRS = (
-   os.path.join(BASE_DIR, 'fixtures'),
+    os.path.join(BASE_DIR, 'fixtures'),
 )
