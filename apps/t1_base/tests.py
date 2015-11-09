@@ -1,5 +1,7 @@
 from django.test import TestCase
 from models import Contact
+from fortytwo_test_task import views
+from django.core.urlresolvers import reverse
 
 # Create your tests here.
 
@@ -29,3 +31,7 @@ class ModelTest(TestCase):
         """Testing created fields"""
         for k in self._contact.keys():
             self.assertEquals(self._contact[k], getattr(self.contact, k))
+
+    def test_get_request(self):
+        request = self.client.get(reverse(views.index))
+        self.assertEqual(request.status_code, 200)
