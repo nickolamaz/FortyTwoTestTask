@@ -1,0 +1,57 @@
+{% extends "t1_base/base.html" %}
+
+{% block content %}
+
+<a href="{% url 'index' %}">Back</a>
+<div class="info">
+
+   <form action="{% url 'edit' %}" method="POST" id="editForm" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.as_p}}
+      <input type="submit" value="save">
+   </form>
+
+</div>
+
+<div class="progress" style="display: none;">
+   Changes have been saved
+</div>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+
+
+    $(document).ready(function() {
+    var progress = $('.progress');
+    var formInput = $(':input');
+    $('#id_date_of_birth').datepicker();
+    $('#editForm').submit(function(e) {
+        e.preventDefault();
+        var data = $('#editForm').serialize();
+        formInput.attr('disabled', true);
+        $.ajax({
+            type: 'POST',
+            url: this.url,
+            data: data,
+            beforeSend: function () {
+                formInput.attr('disabled', true)
+                console.log('disabling')
+            },
+            success: function(data) {
+                console.log(data);
+                progress.show();
+            },
+            error: function(data) {
+                console.log(data);
+            },
+            complete: function () {
+                formInput.attr('disabled', false);
+                progress.hide()
+            }
+            })
+        });
+    });
+    </script>
+{% endblock %}

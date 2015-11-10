@@ -7,26 +7,8 @@ from django.core.urlresolvers import reverse
 
 
 class ModelTest(TestCase):
-    def setUp(self):
-        """Create new person"""
-        self._contact = {
-            "name": "Nikolay",
-            "last_name": "Mazurenko",
-            "date_of_birth": "2015-09-08",
-            "bio": "Here must be my bio",
-            "contacts": "my_contacts",
-            "email": "nickola_90@list.ru",
-            "jabber": "nickolamaz",
-            "skype": "nickolamaz",
-            "other_contacts": "Mazurenko"
-        }
-
-        self.contact = Contact.objects.create(**self._contact)
-
-    def test_fields(self):
-        """Testing created fields"""
-        for k in self._contact.keys():
-            self.assertEquals(self._contact[k], getattr(self.contact, k))
+    fixtures = ['initial_data.json']
+    contact = Contact.objects.first()
 
     def test_get_request(self):
         """Testing get request for index page"""
