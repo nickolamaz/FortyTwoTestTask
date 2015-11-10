@@ -20,7 +20,6 @@ class ModelTest(TestCase):
         request = self.client.get(reverse(views.index))
         self.assertContains(request, self.contact.bio)
         self.assertContains(request, self.contact.name)
-        self.assertContains(request, self.contact.contacts)
         self.assertContains(request, self.contact.last_name)
         self.assertContains(request, self.contact.other_contacts)
         self.assertContains(request, self.contact.skype)

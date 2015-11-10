@@ -12,4 +12,4 @@ class Contact(models.Model):
     skype = models.CharField('Skype ID', max_length=50)
     other_contacts = models.TextField('Other contacts')
     photo = models.ImageField(upload_to='photo', height_field=200,
-                              width_field=200)
+                              width_field=200, null=True)
