@@ -13,6 +13,7 @@ def requests_get(request):
     requests = HttpRequestStore.objects.all().order_by('-date')[:10]
     data = {
         'count': HttpRequestStore.objects.filter(is_viewed=False).count(),
-        'content': render_to_string('t3_middleware/request_list.html', {'requests': requests})
+        'content': render_to_string('t3_middleware/request_list.html',
+                                    {'requests': requests})
         }
     return HttpResponse(json.dumps(data), content_type='application/json')
