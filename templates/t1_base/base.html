@@ -24,9 +24,8 @@
     </head>
     <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
 
-        {% block script %}{% endblock %}
         {% include 't1_base/navigation.html' %}
         {% block content %}{% endblock content %}
-
+        {% block script %}{% endblock %}
     </body>
 </html>

@@ -1,0 +1,8 @@
+{% for r in requests %}
+   <tr>
+     <td>{{ r.date }}</td>
+     <td>{{ r.method }}</td>
+     <td>{{ r.path }}</td>
+     <td>{{ r.host }}</td>
+   </tr>
+{% endfor %}
