@@ -3,6 +3,6 @@ from django.test import TestCase
 
 
 class ModelTest(TestCase):
-    """Simple test"""
     def test(self):
+        """Simple test"""
         self.assertEqual(2 + 2, 4)
