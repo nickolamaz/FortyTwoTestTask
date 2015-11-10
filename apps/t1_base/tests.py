@@ -7,7 +7,10 @@ from django.core.urlresolvers import reverse
 
 class ModelTest(TestCase):
     fixtures = ['initial_data.json']
-    contact = Contact.objects.first()
+
+    def setUp(self):
+        """Initialize test settings"""
+        self.contact = Contact.objects.first()
 
     def test_get_request(self):
         """Testing get request for index page"""
