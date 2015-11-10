@@ -11,12 +11,15 @@ def edit(request):
         form = ContactForm(request.POST, request.FILES)
         if form.is_valid():
             response_data = {'form_saved': True, 'data': 'somedata'}
-            return HttpResponse(json.dumps(response_data), mimetype='multipart/form-data')
+            return HttpResponse(json.dumps(response_data),
+                                mimetype='multipart/form-data')
         else:
             response_data = {'form_saved': False, 'errors': form.errors}
-            return HttpResponse(json.dumps(response_data), mimetype='multipart/form-data')
+            return HttpResponse(json.dumps(response_data),
+                                mimetype='multipart/form-data')
     else:
         contact = get_object_or_404(Contact, pk=2)
         form = ContactForm(instance=contact)
 
-    return render(request, 't5_form_edit/edit.html', {'form': form, 'contact': contact})
+    return render(request, 't5_form_edit/edit.html',
+                  {'form': form, 'contact': contact})
