@@ -44,7 +44,6 @@ INSTALLED_APPS = (
     'apps.t1_base',
     'apps.t3_middleware',
     'apps.t8_template_tags',
-    'apps.hello',
     'south',
 )
 
@@ -137,5 +136,5 @@ SOUTH_DATABASE_ADAPTERS = {
 }
 
 FIXTURE_DIRS = (
-    os.path.join(BASE_DIR, 'fixtures'),
+    os.path.join(BASE_DIR, 'apps/t1_base/fixtures'),
 )
