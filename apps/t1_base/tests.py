@@ -20,9 +20,13 @@ class ModelTest(TestCase):
     def test_get_client_info(self):
         """Testing all fields in response"""
         request = self.client.get(reverse(views.index))
+        date_of_birth = self.contact.date_of_birth.strftime("%d %B, %Y")
         self.assertContains(request, self.contact.bio)
         self.assertContains(request, self.contact.name)
         self.assertContains(request, self.contact.last_name)
+        self.assertContains(request, date_of_birth)
+        self.assertContains(request, self.contact.email)
+        self.assertContains(request, self.contact.jabber)
         self.assertContains(request, self.contact.other_contacts)
         self.assertContains(request, self.contact.skype)
 

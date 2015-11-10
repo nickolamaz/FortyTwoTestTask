@@ -8,7 +8,7 @@
             <div class="col-md-4">
                 <p>{{ contact.name }}</p>
                 <p>{{ contact.last_name }}</p>
-                <p>{{ contact.date_of_birth }}</p>
+                <p>{{ contact.date_of_birth|date:'d F, Y' }}</p>
                 <p><label for="photo">Photo:</label></p>
                 {% if contact.photo %}
                     <img src="{{ contact.photo }}" alt="{{ contact.name }}">
