@@ -1,6 +1,6 @@
 from django.test import TestCase
 from models import Contact
-from fortytwo_test_task import views
+from . import views
 from django.core.urlresolvers import reverse
 
 # Create your tests here.
