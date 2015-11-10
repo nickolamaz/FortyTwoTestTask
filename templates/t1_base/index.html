@@ -5,10 +5,10 @@
 {% block content %}
     {% if contact %}
         <div class="container">
-            <div class="col-md-6">
-                <p><label for="name">Name:</label> {{ contact.name }}</p>
-                <p><label for="last_name">Last name:</label> {{ contact.last_name }}</p>
-                <p><label for="date_of_birth">Date of birth:</label> {{ contact.date_of_birth }}</p>
+            <div class="col-md-4">
+                <p>{{ contact.name }}</p>
+                <p>{{ contact.last_name }}</p>
+                <p>{{ contact.date_of_birth }}</p>
                 <p><label for="photo">Photo:</label></p>
                 {% if contact.photo %}
                     <img src="{{ contact.photo }}" alt="{{ contact.name }}">
@@ -18,8 +18,8 @@
                 {% endif %}
             </div>
 
-            <div class="col-md-6">
-                <p><label for="contacts">Contacts:</label> {{ contact.contacts }}</p>
+            <div class="col-md-4">
+                <p><label for="contacts">Contacts</label></p>
                 <p><label for="email">Email:</label> {{ contact.email }}</p>
                 <p><label for="jabber">Jabber:</label> {{ contact.jabber }}</p>
                 <p><label for="skype">Skype:</label> {{ contact.skype }}</p>
