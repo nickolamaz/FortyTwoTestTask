@@ -2,6 +2,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
+from django.conf import settings
+from django.conf.urls.static import static
 admin.autodiscover()
 
 urlpatterns = patterns(
@@ -18,4 +20,4 @@ urlpatterns = patterns(
         form_class=UserCreationForm,
         success_url='/'), name='register'),
     url(r'^edit/', include('apps.t5_form_edit.urls')),
-)
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

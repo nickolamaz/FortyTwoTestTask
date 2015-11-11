@@ -18,7 +18,7 @@ def edit(request):
             return HttpResponse(json.dumps(response_data),
                                 mimetype='multipart/form-data')
     else:
-        contact = get_object_or_404(Contact, pk=2)
+        contact = Contact.objects.first()
         form = ContactForm(instance=contact)
 
     return render(request, 't5_form_edit/edit.html',

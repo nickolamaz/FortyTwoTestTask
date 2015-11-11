@@ -1,4 +1,5 @@
 from django.db import models
+from PIL import Image
 
 
 class Contact(models.Model):
@@ -12,6 +13,22 @@ class Contact(models.Model):
     skype = models.CharField('Skype ID', max_length=50)
     other_contacts = models.TextField('Other contacts')
 
-    # NOQA photo_height = models.PositiveIntegerField(null=True,
-    # NOQA blank=True, editable=False, default=200)
-    # NOQA photo = models.ImageField(upload_to='photo')
+    photo_height = models.PositiveIntegerField(null=True, blank=True,
+                                               editable=False, default=200)
+    photo_width = models.PositiveIntegerField(null=True, blank=True,
+                                              editable=False, default=200)
+    photo = models.ImageField('Profile Photo',
+                              upload_to='photo', null=True, blank=True,
+                              height_field='photo_height',
+                              width_field='photo_width')
+
+    def save(self):
+        if not self.photo:
+            return
+
+        super(Contact, self).save()
+        photo = Image.open(self.photo.path)
+        (width, height) = photo.size
+        size = (200, 200)
+        photo = photo.resize(size, Image.ANTIALIAS)
+        photo.save(self.photo.path)

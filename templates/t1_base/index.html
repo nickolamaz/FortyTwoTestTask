@@ -11,7 +11,7 @@
                 <p>{{ contact.date_of_birth|date:'d F, Y' }}</p>
                 <p><label for="photo">Photo:</label></p>
                 {% if contact.photo %}
-                    <img src="{{ contact.photo }}" alt="{{ contact.name }}">
+                    <img src="{{ MEDIA_URL }}{{ contact.photo }}" alt="{{ contact.name }}">
                 {% else %}
                     <div id="photo-preview"></div>
                     <div id="photo-stub">No photo</div>
