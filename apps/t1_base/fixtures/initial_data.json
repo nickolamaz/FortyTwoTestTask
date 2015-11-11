@@ -13,5 +13,23 @@
             "skype": "nickolamaz",
             "other_contacts": "Mazurenko"
         }
+    },
+    {
+        "pk": 4,
+        "model": "auth.user",
+        "fields": {
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "is_active": true,
+            "is_superuser": true,
+            "is_staff": true,
+            "last_login": "2015-11-11T08:04:31.609Z",
+            "groups": [],
+            "user_permissions": [],
+            "password": "pbkdf2_sha256$12000$iwFIZb28of9H$teYpul3K+ApR0GekXz0F62+/PjMN5kl1n87voOU/bYc=",
+            "email": "",
+            "date_joined": "2015-11-11T08:04:31.609Z"
+        }
     }
 ]
