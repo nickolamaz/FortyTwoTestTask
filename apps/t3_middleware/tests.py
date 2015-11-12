@@ -33,4 +33,3 @@ class MiddlewareTest(TestCase):
         requests = json.loads(serialize('json', requests))
         for elem in data:
             self.assertNotIn(elem, requests)
-

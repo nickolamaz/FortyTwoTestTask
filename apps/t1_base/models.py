@@ -22,7 +22,7 @@ class Contact(models.Model):
                               height_field='photo_height',
                               width_field='photo_width')
 
-    def save(self, force_insert=False, force_update=False, using=None,
+    def save(self, force_insert=False, force_update=False, using=None,  # NOQA
              update_fields=None, *args, **kwargs):
         if not self.photo:
             super(Contact, self).save(*args, **kwargs)
