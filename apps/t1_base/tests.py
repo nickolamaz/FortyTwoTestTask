@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase
 from models import Contact
-from . import views
+from apps.t1_base import views
 from django.core.urlresolvers import reverse
 
 

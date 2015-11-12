@@ -1,8 +1,16 @@
 {% for r in requests %}
-   <tr>
-     <td>{{ r.date }}</td>
-     <td>{{ r.method }}</td>
-     <td>{{ r.path }}</td>
-     <td>{{ r.host }}</td>
-   </tr>
+    <div class="row">
+        <div class="col-md-3">
+            {{ r.date }}
+        </div>
+        <div class="col-md-3">
+            {{ r.method }}
+        </div>
+        <div class="col-md-3">
+            {{ r.path }}
+        </div>
+        <div class="col-md-3">
+            {{ r.host }}
+        </div>
+    </div>
 {% endfor %}

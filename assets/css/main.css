@@ -1,20 +1,27 @@
-/*.wrap {*/
-    /*max-width: 1000px;*/
-/*}*/
-
-/*.right {*/
-    /*float:right;*/
-/*}*/
-
-/*.left {*/
-    /*float: left;*/
-/*}*/
-
-/*.label {*/
-    /*font-weight: bold;*/
-/*}*/
-
 .clear {
     border-top: 2px solid black;
     clear: both;
+}
+#editForm .form-group label {
+    display: inline-block;
+    width:120px;
+    text-align: right;
+}
+#editForm textarea {
+    width: 100%;
+}
+.photo-preview {
+    height: 200px;
+    width: 200px;
+    border: 2px solid #000;
+}
+#image-preview {
+    position: absolute;
+    left: 15px;
+    bottom: 0;
+    width: 200px;
+    height: 200px;
+}
+label[for='id_photo'] {
+    cursor: pointer;
 }
