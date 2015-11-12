@@ -12,7 +12,6 @@ class Contact(models.Model):
     jabber = models.EmailField('Jabber ID')
     skype = models.CharField('Skype ID', max_length=50)
     other_contacts = models.TextField('Other contacts')
-
     photo_height = models.PositiveIntegerField(null=True, blank=True,
                                                editable=False, default=200)
     photo_width = models.PositiveIntegerField(null=True, blank=True,

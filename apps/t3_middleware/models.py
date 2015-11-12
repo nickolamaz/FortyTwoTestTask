@@ -7,7 +7,6 @@ class HttpRequestStore(models.Model):
     path = models.CharField(max_length=200)
     host = models.CharField(max_length=200)
     is_viewed = models.BooleanField(default=False)
-
     priority = models.IntegerField(default=1)
 
     def __unicode__(self):

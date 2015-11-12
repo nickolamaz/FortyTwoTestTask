@@ -5,10 +5,10 @@ import json
 
 
 def requests_view(request):
-    requests = HttpRequestStore.objects.all().order_by('-date')[:10]
+    requests = HttpRequestStore.objects.order_by('-date')[:10]
     if request.is_ajax():
         if request.method == 'POST':
-            HttpRequestStore.objects.all().update(is_viewed=True)
+            HttpRequestStore.objects.update(is_viewed=True)
         elif request.method == 'GET':
             data = {
                 'count': HttpRequestStore.objects.filter(
