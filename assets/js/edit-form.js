@@ -1,28 +1,6 @@
-function startGetRequests() {
-    setInterval('get_requests()', 2000)
-};
-
-function get_requests() {
-    $.ajax({
-        url: 'requests/getrequests/',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            $('#requests').html(data.content);
-            if (data.count > 0) {
-                $('title').html(data.count + ' unviewed requests. 42 Cups Of Coffee');
-            } else {
-                $('title').html('42 Cups Of Coffee');
-            }
-
-            console.log(data.count);
-        },
-        error: function (data) {
-            console.log(data);
-        }
-    });
-}
-
+///////////////////////////////////////
+// Preview image on upload
+///////////////////////////////////////
 function readUploadImgUrl(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -42,6 +20,9 @@ $('#id_photo').change(function () {
 });
 
 
+///////////////////////////////////////
+// Edit form handling
+///////////////////////////////////////
 $('#editForm').ajaxForm({
     beforeSubmit: function (form, options) {
         $("#loading").show();

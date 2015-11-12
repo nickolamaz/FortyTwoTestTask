@@ -4,16 +4,19 @@ from django.template.loader import render_to_string
 import json
 
 
-def request(request):
-    HttpRequestStore.objects.filter(is_viewed=False).update(is_viewed=True)
-    return render(request, 't3_middleware/requests.html')
-
-
-def requests_get(request):
+def requests_view(request):
     requests = HttpRequestStore.objects.all().order_by('-date')[:10]
-    data = {
-        'count': HttpRequestStore.objects.filter(is_viewed=False).count(),
-        'content': render_to_string('t3_middleware/request_list.html',
-                                    {'requests': requests})
-        }
-    return HttpResponse(json.dumps(data), content_type='application/json')
+    if request.is_ajax():
+        if request.method == 'POST':
+            HttpRequestStore.objects.all().update(is_viewed=True)
+        elif request.method == 'GET':
+            data = {
+                'count': HttpRequestStore.objects.filter(
+                    is_viewed=False).count(),
+                'content': render_to_string('t3_middleware/request_list.html',
+                                            {'requests': requests}),
+                'content_count': requests.count()
+                }
+            return HttpResponse(json.dumps(data),
+                                content_type='application/json')
+    return render(request, 't3_middleware/requests.html')
