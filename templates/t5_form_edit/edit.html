@@ -2,12 +2,7 @@
 {% load staticfiles %}
 
 {% block content %}
-    <style>
-
-{#    .form-group * {#}
-{#        vertical-align: middle;#}
-{#    }#}
-    </style>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <div class="container info">
     <div id="loading" class="alert alert-info text-center" style="display: none;">Loading...</div>
     <div id="success" class="alert alert-success text-center" style="display: none;">Information saved successfully</div>
@@ -67,5 +62,6 @@
 {% endblock %}
 
 {% block script %}
+    <script>$('#id_date_of_birth').datepicker()</script>
     <script src="{% static 'js/edit-form.js' %}"></script>
 {% endblock %}
