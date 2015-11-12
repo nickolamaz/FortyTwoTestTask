@@ -22,13 +22,14 @@ class Contact(models.Model):
                               height_field='photo_height',
                               width_field='photo_width')
 
-    def save(self):
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None, *args, **kwargs):
         if not self.photo:
-            return
-
-        super(Contact, self).save()
-        photo = Image.open(self.photo.path)
-        (width, height) = photo.size
-        size = (200, 200)
-        photo = photo.resize(size, Image.ANTIALIAS)
-        photo.save(self.photo.path)
+            super(Contact, self).save(*args, **kwargs)
+        else:
+            super(Contact, self).save(*args, **kwargs)
+            photo = Image.open(self.photo.path)
+            (width, height) = photo.size
+            size = (200, 200)
+            photo = photo.resize(size, Image.ANTIALIAS)
+            photo.save(self.photo.path)

@@ -1,57 +1,71 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block content %}
+    <style>
 
-<a href="{% url 'index' %}">Back</a>
-<div class="info">
+{#    .form-group * {#}
+{#        vertical-align: middle;#}
+{#    }#}
+    </style>
+<div class="container info">
+    <div id="loading" class="alert alert-info text-center" style="display: none;">Loading...</div>
+    <div id="success" class="alert alert-success text-center" style="display: none;">Information saved successfully</div>
+    <div id="error" class="alert alert-danger text-center" style="display: none">Please fix errors below</div>
+    <form action="{% url 'edit' %}" method="POST" id="editForm" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-md-5">
+            <div class="form-group">
+                {{ form.name.label_tag }} {{ form.name }}
+            </div>
+            <div class="form-group">
+                {{ form.last_name.label_tag }} {{ form.last_name }}
+            </div>
+            <div class="form-group">
+                {{ form.date_of_birth.label_tag }} {{ form.date_of_birth }}
+            </div>
+            <div class="form-group">
+                {{ form.photo.label_tag }}
+                <span class="hidden">{{ form.photo }}</span>
+            </div>
+            <div class="photo-preview">
+                <img src="#" alt="Photo Preview" id="image-preview">
+            </div>
+        </div>
 
-   <form action="{% url 'edit' %}" method="POST" id="editForm" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{form.as_p}}
-      <input type="submit" value="save">
-   </form>
+        <div class="col-md-5">
+            <div class="form-group">
+                {{ form.email.label_tag }} {{ form.email }}
+            </div>
+            <div class="form-group">
+                {{ form.jabber.label_tag }} {{ form.jabber }}
+            </div>
+            <div class="form-group">
+                {{ form.skype.label_tag }} {{ form.skype }}
+            </div>
+            <div class="form-group">
+                {{ form.contacts.label_tag }} {{ form.contacts }}
+            </div>
+            <div class="form-group">
+                {{ form.bio.label_tag }} {{ form.bio }}
+            </div>
+            <div class="form-group">
+                {{ form.other_contacts.label_tag }} {{ form.other_contacts }}
+            </div>
 
-</div>
+        </div>
+        <p class="clearfix"></p>
+        <input type="submit" value="Save" class="btn btn-info">
+    </form>
+    <p></p>
+    <div class="clear">
+        <a href="{% url 'request' %}">requests</a>
+    </div>
 
-<div class="progress" style="display: none;">
-   Changes have been saved
 </div>
 
 {% endblock %}
 
 {% block script %}
-    <script>
 
-
-    $(document).ready(function() {
-    var progress = $('.progress');
-    var formInput = $(':input');
-    $('#id_date_of_birth').datepicker();
-    $('#editForm').submit(function(e) {
-        e.preventDefault();
-        var data = $('#editForm').serialize();
-        formInput.attr('disabled', true);
-        $.ajax({
-            type: 'POST',
-            url: this.url,
-            data: data,
-            beforeSend: function () {
-                formInput.attr('disabled', true)
-                console.log('disabling')
-            },
-            success: function(data) {
-                console.log(data);
-                progress.show();
-            },
-            error: function(data) {
-                console.log(data);
-            },
-            complete: function () {
-                formInput.attr('disabled', false);
-                progress.hide()
-            }
-            })
-        });
-    });
-    </script>
 {% endblock %}
