@@ -11,17 +11,23 @@
     width: 100%;
 }
 .photo-preview {
-    height: 200px;
+    height: 500px;
     width: 200px;
-    border: 2px solid #000;
+    /*border: 2px solid #000;*/
 }
 #image-preview {
-    position: absolute;
-    left: 15px;
-    bottom: 0;
+    /*position: absolute;*/
+    /*left: 15px;*/
+    /*bottom: 0;*/
     width: 200px;
     height: 200px;
 }
 label[for='id_photo'] {
     cursor: pointer;
+}
+.uploaded-photo,
+#loading,
+#success,
+#error {
+    display: none;
 }

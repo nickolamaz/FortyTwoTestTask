@@ -1,26 +1,4 @@
 ///////////////////////////////////////
-// Preview image on upload
-///////////////////////////////////////
-function readUploadImgUrl(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#image-preview').attr('src', e.target.result);
-            console.log(e);
-        };
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-$('#id_photo').change(function () {
-    console.log('it working');
-    readUploadImgUrl(this);
-});
-
-
-///////////////////////////////////////
 // Edit form handling
 ///////////////////////////////////////
 $('#editForm').ajaxForm({
@@ -57,6 +35,9 @@ $('#editForm').ajaxForm({
         setTimeout(function () {
             $('.error_field').removeClass();
         }, 5000);
+        if ($('#id_photo').val()) {
+            window.location.reload()
+        }
 
     }
 });

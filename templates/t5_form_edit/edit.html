@@ -4,9 +4,9 @@
 {% block content %}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <div class="container info">
-    <div id="loading" class="alert alert-info text-center" style="display: none;">Loading...</div>
-    <div id="success" class="alert alert-success text-center" style="display: none;">Information saved successfully</div>
-    <div id="error" class="alert alert-danger text-center" style="display: none">Please fix errors below</div>
+    <div id="loading" class="alert alert-info text-center">Loading...</div>
+    <div id="success" class="alert alert-success text-center">Information saved successfully</div>
+    <div id="error" class="alert alert-danger text-center">Please fix errors below</div>
     <form action="{% url 'edit' %}" method="POST" id="editForm" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="col-md-5">
@@ -21,10 +21,21 @@
             </div>
             <div class="form-group">
                 {{ form.photo.label_tag }}
-                <span class="hidden">{{ form.photo }}</span>
+                <span>{{ form.photo }}</span>
             </div>
             <div class="photo-preview">
-                <img src="#" alt="Photo Preview" id="image-preview">
+                {% if form.photo %}
+                    <div class="current-photo">
+                        <p>Your current photo:</p>
+                        <img src="{{ MEDIA_URL }}{{ contact.photo }}" alt="{{ contact.name }}">
+                    </div>
+
+                {% endif %}
+                <div class="uploaded-photo">
+                    <p>New photo:</p>
+                    <img src="#" alt="Photo Preview" id="image-preview">
+                </div>
+            <p class="clearfix"></p>
             </div>
         </div>
 
@@ -50,18 +61,20 @@
 
         </div>
         <p class="clearfix"></p>
-        <input type="submit" value="Save" class="btn btn-info">
+        <input type="submit" value="Save" class="btn btn-success">
+        <a href="{% url 'index' %}" class="btn btn-info">Cancel</a>
     </form>
+
     <p></p>
     <div class="clear">
         <a href="{% url 'request' %}">requests</a>
     </div>
 
 </div>
-
 {% endblock %}
 
 {% block script %}
     <script>$('#id_date_of_birth').datepicker()</script>
     <script src="{% static 'js/edit-form.js' %}"></script>
+    {{ form.media }}
 {% endblock %}
