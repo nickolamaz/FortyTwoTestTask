@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from apps.t1_base.models import Contact
 from forms import ContactForm
 from django.http import HttpResponse, HttpResponseBadRequest
+import apps.t8_template_tags.signals  # NOQA
 import json
 
 

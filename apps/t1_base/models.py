@@ -32,3 +32,6 @@ class Contact(models.Model):
             size = (200, 200)
             photo = photo.resize(size, Image.ANTIALIAS)
             photo.save(self.photo.path)
+
+    def __unicode__(self):
+        return self.name

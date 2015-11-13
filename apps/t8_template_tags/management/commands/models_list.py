@@ -1,36 +1,30 @@
 from django.core.management.base import BaseCommand
-from optparse import make_option
-from django.db import models
+from django.db.models import get_models
+
+
+def get_models_info():
+    """ Get list of models with count of objects in it"""
+    models_info = []
+
+    for model in get_models():
+        models_info.append(
+            '[%s] - %d objects' % (
+                model.__name__, model.objects.count())
+        )
+    return models_info
 
 
 class Command(BaseCommand):
-    option_list = BaseCommand.option_list + (
-        make_option('--tee-stderr',
-                    action='store_true',
-                    dest='tee',
-                    default=False,
-                    help='duplicate output to stderr'),
+    help = 'Print all ContentType models and each count'
 
-        make_option('--stderr-prefix',
-                    action="store",
-                    type="string",
-                    dest='prefix',
-                    default='error:',
-                    help='prefix for stderr output'),
-    )
+    def print_models_info(self, lines):
+        """ printing lines to stdout """
+        map(self.stdout.write, lines)
 
-    help = 'Print all project models and the count of objects in every model'
+        lines = ['error: ' + line for line in lines]
+        map(self.stderr.write, lines)
 
-    def handle(self, *args, **kwargs):
-        for m in models.get_models():
-            row = "%s.%s\t%2d" % (m.__module__, m.__name__,
-                                  m._default_manager.count())
+    def handle(self, *args, **options):
+        models_info = get_models_info()
 
-            self.stdout.write('%s\n' % row)
-
-            if kwargs.get('tee'):
-                prefix = kwargs.get('prefix')
-                if prefix:
-                    self.stderr.write('%s %s\n' % (prefix, row))
-                else:
-                    self.stderr.write('%s\n' % row)
+        self.print_models_info(models_info)

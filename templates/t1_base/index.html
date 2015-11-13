@@ -1,10 +1,12 @@
 {% extends "base.html" %}
+{% load links_admin %}
 
 <h2>42 Coffee Cups Test Assignment</h2>
 
 {% block content %}
     {% if contact %}
         <div class="container">
+            <a href="{% admin_edit contact %}">(Admin)</a>
             <div class="col-md-4">
                 <p>{{ contact.name }}</p>
                 <p>{{ contact.last_name }}</p>
