@@ -9,10 +9,10 @@ def save_signal(sender, created, **kwargs):
     if class_name == 'ModelSignal':
         return
     action = 'create' if created else 'edit'
-    ModelSignal.objects.create(model=class_name, action=action).save()
+    ModelSignal.objects.create(model=class_name, action=action)
 
 
 @receiver(post_delete)
 def delete_signal(sender, **kwargs):
     class_name = sender.__name__
-    ModelSignal.objects.create(model=class_name, action='delete').save()
+    ModelSignal.objects.create(model=class_name, action='delete')
