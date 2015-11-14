@@ -15,3 +15,6 @@ class HttpRequestStore(models.Model):
             self.method,
             self.path
         )
+
+    class Meta:
+        ordering = ['-priority', '-date']

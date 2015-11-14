@@ -1,17 +1,17 @@
 {% for r in requests %}
     <p class="clearfix"></p>
     <div class="row">
-        <div class="col-md-2 col-md-offset-2">
+        <div class="col-md-2 col-md-offset-1">
             {{ r.date }}
         </div>
         <div class="col-md-2">
             {{ r.method }}
         </div>
-        <div class="col-md-4 text-left">
+        <div class="col-md-3 text-left">
             {{ r.path }}
         </div>
-{#        <div class="col-md-3">#}
-{#            {{ r.host }}#}
-{#        </div>#}
+        <div class="col-md-2 priority">
+            {{ r.priority }}
+        </div>
     </div>
 {% endfor %}

@@ -96,3 +96,21 @@ class MiddlewareTest(TestCase):
         """Testing requests link is present on index page"""
         response = self.client.get(reverse(index_view))
         self.assertContains(response, '<a href="/requests/">requests</a>')
+
+
+class TestPriority(TestCase):
+    def test_priority_create(self):
+        """Testing creation of default priority field"""
+        self.client.get(reverse(index_view))
+        request = HttpRequestStore.objects.last()
+        self.assertEqual(request.priority, 1)
+
+    def test_priority_ordering(self):
+        """Testing ordering by priority field"""
+        self.client.get(reverse(views.requests_view))
+        request = HttpRequestStore.objects.last()
+        request.priority = 50
+        request.save()
+        for i in range(10):
+            self.client.get(reverse(index_view))
+        self.assertEqual('/requests/', request.path)
