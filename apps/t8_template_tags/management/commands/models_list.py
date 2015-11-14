@@ -7,5 +7,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for model in get_models():
-            self.stdout.write('%s - objects: %s' % (model.__name__, model.objects.count()))
-            self.stderr.write('error: %s - objects: %s\n' % (model.__name__, model.objects.count()))
+            self.stdout.write('%s - objects: %d' %
+                              (model.__name__, model.objects.count()))
+            self.stderr.write('error: %s - objects: %d\n' %
+                              (model.__name__, model.objects.count()))

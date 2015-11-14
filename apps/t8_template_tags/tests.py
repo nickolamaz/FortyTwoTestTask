@@ -51,7 +51,7 @@ class TestCommands(TestCase):
         models = get_models()
         for model in models:
             self.assertIn(
-                '[%s] - %d' % (model.__name__, model._default_manager.count()),
+                '%s - objects: %d' % (model.__name__, model.objects.count()),
                 out.getvalue())
 
 
