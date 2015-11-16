@@ -5,7 +5,7 @@ import json
 
 
 def requests_view(request):
-    requests = HttpRequestStore.objects.order_by('-date')[:10]
+    requests = HttpRequestStore.objects.order_by('-priority', '-date')[:10]
     if request.is_ajax():
         if request.method == 'POST':
             HttpRequestStore.objects.update(is_viewed=True)

@@ -5,6 +5,7 @@ from apps.t3_middleware import views
 from django.core.urlresolvers import reverse
 from django.core.serializers import serialize
 import json
+import re
 
 
 class MiddlewareTest(TestCase):
@@ -114,3 +115,12 @@ class TestPriority(TestCase):
         for i in range(10):
             self.client.get(reverse(index_view))
         self.assertEqual('/requests/', request.path)
+
+        response_get = self.client.get(
+            reverse(views.requests_view),
+            HTTP_X_REQUESTED_WITH='XMLHttpRequest'
+        )
+        data = json.loads(response_get.content)
+        resp = re.compile(r'priority">\n\s+(\d+)')
+        result = re.findall(resp, data['content'])
+        self.assertEqual(int(result[0]), request.priority)
