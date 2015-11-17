@@ -121,6 +121,7 @@ class TestPriority(TestCase):
             HTTP_X_REQUESTED_WITH='XMLHttpRequest'
         )
         data = json.loads(response_get.content)
-        resp = re.compile(r'priority">\n\s+(\d+)')
+        resp = re.compile(r'name="form-\d+-priority" '
+                          r'type="number" value="(\d+)')
         result = re.findall(resp, data['content'])
         self.assertEqual(int(result[0]), request.priority)

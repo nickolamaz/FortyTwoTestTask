@@ -50,4 +50,4 @@ setInterval(function () {
         viewed = false;
     }
     get_requests();
-}, 2000);
+}, 10000);
