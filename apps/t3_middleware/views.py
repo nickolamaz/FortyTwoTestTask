@@ -18,7 +18,8 @@ def requests_view(request):
                 formset.save()
             else:
                 form_errors = formset.errors
-                return render(request, 't3_middleware/requests.html', {'form_errors': form_errors})
+                return render(request, 't3_middleware/requests.html',
+                              {'form_errors': form_errors})
     elif request.method == 'GET' and request.is_ajax():
         formset = RequestsFormset(queryset=requests)
         obj = zip(requests, formset)
