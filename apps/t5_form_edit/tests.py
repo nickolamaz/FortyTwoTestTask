@@ -58,8 +58,6 @@ class FormEditTest(TestCase):
         """Testing image upload with form"""
         self.client.login(username='admin', password='123')
         contact = Contact.objects.first()
-        # noqa photo = open('assets/images/DSC_0043-.jpg', 'rb')
-        # noqa photo = SimpleUploadedFile(photo.name, photo.read())
         data = {
             'name': 'name',
             'last_name': 'last name',
@@ -76,11 +74,6 @@ class FormEditTest(TestCase):
         form.save()
         response = self.client.post(reverse(views.edit), data)
         self.assertEqual(response.status_code, 200)
-
-        # noqa contact = Contact.objects.first()
-        # noqa uploaded_image = Image.open(contact.photo)
-        # noqa self.assertLessEqual(uploaded_image.height, 200)
-        # noqa self.assertLessEqual(uploaded_image.width, 200)
 
     def test_invalid_data(self):
         """Testing requests with invalid data"""

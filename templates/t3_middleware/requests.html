@@ -3,6 +3,13 @@
 {% load staticfiles %}
 
 {% block content %}
+    {% if form_errors %}
+        <span class="text-center">
+        {% for error in form_errors %}
+            {{ error }}
+        {% endfor %}
+        </span>
+    {% endif %}
     <div class="container text-center">
         <div class="col-md-2 col-md-offset-1">
             <h3>Date</h3>

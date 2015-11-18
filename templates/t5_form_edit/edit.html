@@ -24,12 +24,13 @@
                 <span>{{ form.photo }}</span>
             </div>
             <div class="photo-preview">
-                {% if form.photo %}
+                {% if contact.photo %}
                     <div class="current-photo">
                         <p>Your current photo:</p>
                         <img src="{{ MEDIA_URL }}{{ contact.photo }}" alt="{{ contact.name }}">
                     </div>
-
+                {% else %}
+                    <p>You haven't profile photo yet. Choose file to upload new one</p>
                 {% endif %}
                 <div class="uploaded-photo">
                     <p>New photo:</p>
